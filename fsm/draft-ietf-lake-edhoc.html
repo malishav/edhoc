@@ -4156,12 +4156,11 @@ OKM(i) = EDHOC-KDF( PRK_2e, -i, TH_2, length(P(i)) )
         </h3>
 <p id="appendix-K.1-1">The Initiator sends message_1, triggering the state machine to transition from START to WAIT_M2, and waits for message_2.<a href="#appendix-K.1-1" class="pilcrow">¶</a></p>
 <p id="appendix-K.1-2">If the incoming message is an error message then the Initiator transitions from WAIT_M2 to ABORTED. In case of error code 2 (Wrong Selected Cipher Suite), the Initiator remembers the supported cipher suites for this particular Responder and transitions from ABORTED to START. The message_1 that the Initiator subsequently sends takes into account the cipher suites supported by the Responder.<a href="#appendix-K.1-2" class="pilcrow">¶</a></p>
-<p id="appendix-K.1-3">Upon receiving a non-error message, the Initiator transitions from WAIT_M2 to RCVD_M2 and processes the message. If processing fails, then the Initiator transitions from RCVD_M2 to ABORTED.<a href="#appendix-K.1-3" class="pilcrow">¶</a></p>
-<p id="appendix-K.1-4">In case of successful processing of message_2, the Initiator transitions from RCVD_M2 to VRFD_M2.<a href="#appendix-K.1-4" class="pilcrow">¶</a></p>
-<p id="appendix-K.1-5">The Initiator prepares and processes message_3 for sending. If any processing error is encountered, the Initiator transitions from VRFD_M2 to ABORTED. If message_3 is successfully sent, the Initiator transitions from VRFD_M2 to COMPLETED.<a href="#appendix-K.1-5" class="pilcrow">¶</a></p>
-<p id="appendix-K.1-6">If the application profile includes message_4, then the Initiator waits for message_4. If the incoming message is an error message then the Initiator transitions from COMPLETED to ABORTED. Upon receiving a non-error message, the Initiator transitions from COMPLETED (="WAIT_M4") to RCVD_M4 and processes the message. If processing fails, then the Initiator transitions from RCVD_M4 to ABORTED. In case of successful processing of message_4, the Initiator transitions from RCVD_M4 to PERSISTED (="VRFD_M4").<a href="#appendix-K.1-6" class="pilcrow">¶</a></p>
-<p id="appendix-K.1-7">If the application profile does not include message_4, then the Initiator waits for an incoming application message. If the decryption and verification of the application message is successful, then the the Initiator transitions from COMPLETED to PERSISTED.<a href="#appendix-K.1-7" class="pilcrow">¶</a></p>
-<div class="alignCenter art-text artwork" id="appendix-K.1-8">
+<p id="appendix-K.1-3">Upon receiving a non-error message, the Initiator transitions from WAIT_M2 to RCVD_M2 and processes the message. If processing fails, then the Initiator transitions from RCVD_M2 to ABORTED. In case of successful processing of message_2, the Initiator transitions from RCVD_M2 to VRFD_M2.<a href="#appendix-K.1-3" class="pilcrow">¶</a></p>
+<p id="appendix-K.1-4">The Initiator prepares and processes message_3 for sending. If any processing error is encountered, the Initiator transitions from VRFD_M2 to ABORTED. If message_3 is successfully sent, the Initiator transitions from VRFD_M2 to COMPLETED.<a href="#appendix-K.1-4" class="pilcrow">¶</a></p>
+<p id="appendix-K.1-5">If the application profile includes message_4, then the Initiator waits for message_4. If the incoming message is an error message then the Initiator transitions from COMPLETED to ABORTED. Upon receiving a non-error message, the Initiator transitions from COMPLETED (="WAIT_M4") to RCVD_M4 and processes the message. If processing fails, then the Initiator transitions from RCVD_M4 to ABORTED. In case of successful processing of message_4, the Initiator transitions from RCVD_M4 to PERSISTED (="VRFD_M4").<a href="#appendix-K.1-5" class="pilcrow">¶</a></p>
+<p id="appendix-K.1-6">If the application profile does not include message_4, then the Initiator waits for an incoming application message. If the decryption and verification of the application message is successful, then the the Initiator transitions from COMPLETED to PERSISTED.<a href="#appendix-K.1-6" class="pilcrow">¶</a></p>
+<div class="alignCenter art-text artwork" id="appendix-K.1-7">
 <pre>
     +- - - - - - - - - -&gt; START
     |                       |
@@ -4194,7 +4193,7 @@ ABORTED &lt;---------------- WAIT_M2
                             |                       |
                             v                       |
                           PERSISTED &lt;---------------+
-</pre><a href="#appendix-K.1-8" class="pilcrow">¶</a>
+</pre><a href="#appendix-K.1-7" class="pilcrow">¶</a>
 </div>
 </section>
 </div>

@@ -4089,10 +4089,9 @@ K.1.  Initiator State Machine
 
    Upon receiving a non-error message, the Initiator transitions from
    WAIT_M2 to RCVD_M2 and processes the message.  If processing fails,
-   then the Initiator transitions from RCVD_M2 to ABORTED.
-
-   In case of successful processing of message_2, the Initiator
-   transitions from RCVD_M2 to VRFD_M2.
+   then the Initiator transitions from RCVD_M2 to ABORTED.  In case of
+   successful processing of message_2, the Initiator transitions from
+   RCVD_M2 to VRFD_M2.
 
    The Initiator prepares and processes message_3 for sending.  If any
    processing error is encountered, the Initiator transitions from
