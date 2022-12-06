@@ -11,10 +11,10 @@
 <meta content="
        This document specifies Ephemeral Diffie-Hellman Over COSE (EDHOC), a very compact and lightweight authenticated Diffie-Hellman key exchange with ephemeral keys. EDHOC provides mutual authentication, forward secrecy, and identity protection. EDHOC is intended for usage in constrained scenarios and a main use case is to establish an OSCORE security context. By reusing COSE for cryptography, CBOR for encoding, and CoAP for transport, the additional code size can be kept very low. 
     " name="description">
-<meta content="xml2rfc 3.15.2" name="generator">
+<meta content="xml2rfc 3.15.3" name="generator">
 <meta content="draft-ietf-lake-edhoc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.15.2
+  xml2rfc 3.15.3
     Python 3.10.8
     appdirs 1.4.4
     ConfigArgParse 1.5.3
@@ -26,8 +26,8 @@
     MarkupSafe 2.1.1
     pycountry 22.3.5
     PyYAML 6.0
-    requests 2.27.1
-    setuptools 59.4.0
+    requests 2.28.1
+    setuptools 65.6.0
     six 1.16.0
     wcwidth 0.2.5
 -->
@@ -1036,11 +1036,11 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">EDHOC</td>
-<td class="right">November 2022</td>
+<td class="right">December 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Selander, et al.</td>
-<td class="center">Expires 2 June 2023</td>
+<td class="center">Expires 9 June 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1053,12 +1053,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-lake-edhoc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-11-29" class="published">29 November 2022</time>
+<time datetime="2022-12-06" class="published">6 December 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-06-02">2 June 2023</time></dd>
+<dd class="expires"><time datetime="2023-06-09">9 June 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1111,7 +1111,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 June 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 June 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1914,8 +1914,8 @@ The authentication credential typically also contains other parameters that need
 <p id="section-3.8-3">Each EAD field, EAD_x for x = 1, 2, 3 or 4, is a CBOR sequence (see <a href="#CBOR" class="auto internal xref">Appendix C.1</a>) of one or more EAD items ead defined in <a href="#fig-ead-item" class="auto internal xref">Figure 7</a>. See <a href="#CDDL" class="auto internal xref">Appendix C.2</a> for the CDDL definitions.<a href="#section-3.8-3" class="pilcrow">¶</a></p>
 <span id="name-definition-of-ead-item"></span><div id="fig-ead-item">
 <figure id="figure-7">
-          <div id="section-3.8-4.1">
-<pre class="lang-CDDL sourcecode">
+          <div class="lang-CDDL sourcecode" id="section-3.8-4.1">
+<pre>
 ead = (
   ead_label : int,
   ? ead_value : bstr,
@@ -2112,8 +2112,8 @@ ead = (
 </pre><a href="#section-4.1.2-2" class="pilcrow">¶</a>
 </div>
 <p id="section-4.1.2-3">where info is encoded as the CBOR sequence<a href="#section-4.1.2-3" class="pilcrow">¶</a></p>
-<div id="section-4.1.2-4">
-<pre class="lang-CDDL sourcecode">
+<div class="lang-CDDL sourcecode" id="section-4.1.2-4">
+<pre>
 info = (
   info_label : int,
   context : bstr,
@@ -2266,8 +2266,8 @@ Additional optimizations are made to reduce message overhead.<a href="#section-5
 <a href="#section-5.2.1" class="section-number selfRef">5.2.1. </a><a href="#name-formatting-of-message-1" class="section-name selfRef">Formatting of Message 1</a>
           </h4>
 <p id="section-5.2.1-1">message_1 SHALL be a CBOR Sequence (see <a href="#CBOR" class="auto internal xref">Appendix C.1</a>) as defined below<a href="#section-5.2.1-1" class="pilcrow">¶</a></p>
-<div id="section-5.2.1-2">
-<pre class="lang-CDDL sourcecode">
+<div class="lang-CDDL sourcecode" id="section-5.2.1-2">
+<pre>
 message_1 = (
   METHOD : int,
   SUITES_I : suites,
@@ -2354,8 +2354,8 @@ EAD_1 = 1* ead
 <a href="#section-5.3.1" class="section-number selfRef">5.3.1. </a><a href="#name-formatting-of-message-2" class="section-name selfRef">Formatting of Message 2</a>
           </h4>
 <p id="section-5.3.1-1">message_2 SHALL be a CBOR Sequence (see <a href="#CBOR" class="auto internal xref">Appendix C.1</a>) as defined below<a href="#section-5.3.1-1" class="pilcrow">¶</a></p>
-<div id="section-5.3.1-2">
-<pre class="lang-CDDL sourcecode">
+<div class="lang-CDDL sourcecode" id="section-5.3.1-2">
+<pre>
 message_2 = (
   G_Y_CIPHERTEXT_2 : bstr,
   C_R : bstr / -24..23,
@@ -2465,8 +2465,8 @@ message_2 = (
 <a href="#section-5.4.1" class="section-number selfRef">5.4.1. </a><a href="#name-formatting-of-message-3" class="section-name selfRef">Formatting of Message 3</a>
           </h4>
 <p id="section-5.4.1-1">message_3 SHALL be a CBOR Sequence (see <a href="#CBOR" class="auto internal xref">Appendix C.1</a>) as defined below<a href="#section-5.4.1-1" class="pilcrow">¶</a></p>
-<div id="section-5.4.1-2">
-<pre class="lang-CDDL sourcecode">
+<div class="lang-CDDL sourcecode" id="section-5.4.1-2">
+<pre>
 message_3 = (
   CIPHERTEXT_3 : bstr,
 )
@@ -2586,8 +2586,8 @@ CIPHERTEXT_3 is the 'ciphertext' of COSE_Encrypt0.<a href="#section-5.4.2-2.4.3"
 <a href="#section-5.5.1" class="section-number selfRef">5.5.1. </a><a href="#name-formatting-of-message-4" class="section-name selfRef">Formatting of Message 4</a>
           </h4>
 <p id="section-5.5.1-1">message_4 SHALL be a CBOR Sequence (see <a href="#CBOR" class="auto internal xref">Appendix C.1</a>) as defined below<a href="#section-5.5.1-1" class="pilcrow">¶</a></p>
-<div id="section-5.5.1-2">
-<pre class="lang-CDDL sourcecode">
+<div class="lang-CDDL sourcecode" id="section-5.5.1-2">
+<pre>
 message_4 = (
   CIPHERTEXT_4 : bstr,
 )
@@ -2662,8 +2662,8 @@ CIPHERTEXT_4 is the 'ciphertext' of COSE_Encrypt0.<a href="#section-5.5.2-2.1.3"
 <p id="section-6-4">error SHALL be a CBOR Sequence (see <a href="#CBOR" class="auto internal xref">Appendix C.1</a>) as defined below<a href="#section-6-4" class="pilcrow">¶</a></p>
 <span id="name-edhoc-error-message"></span><div id="fig-error-message">
 <figure id="figure-9">
-        <div id="section-6-5.1">
-<pre class="lang-CDDL sourcecode">
+        <div class="lang-CDDL sourcecode" id="section-6-5.1">
+<pre>
 error = (
   ERR_CODE : int,
   ERR_INFO : any,
@@ -3464,7 +3464,7 @@ Desc: ChaCha20/Poly1305, SHAKE256, 16, X448, EdDSA,
 <dd class="break"></dd>
 <dt id="I-D.ietf-rats-eat">[I-D.ietf-rats-eat]</dt>
         <dd>
-<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-17</span>, <time datetime="2022-10-22" class="refDate">22 October 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-rats-eat-17.txt">https://www.ietf.org/archive/id/draft-ietf-rats-eat-17.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Lundblade, L.</span>, <span class="refAuthor">Mandyam, G.</span>, <span class="refAuthor">O'Donoghue, J.</span>, and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"The Entity Attestation Token (EAT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-eat-18</span>, <time datetime="2022-12-04" class="refDate">4 December 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-ietf-rats-eat-18.txt">https://www.ietf.org/archive/id/draft-ietf-rats-eat-18.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.irtf-cfrg-det-sigs-with-noise">[I-D.irtf-cfrg-det-sigs-with-noise]</dt>
         <dd>
@@ -3801,8 +3801,8 @@ h'12cd'             0x4212cd             byte string
 <a href="#appendix-C.2" class="section-number selfRef">C.2. </a><a href="#name-cddl-definitions" class="section-name selfRef">CDDL Definitions</a>
         </h3>
 <p id="appendix-C.2-1">This sections compiles the CDDL definitions for ease of reference.<a href="#appendix-C.2-1" class="pilcrow">¶</a></p>
-<div id="appendix-C.2-2">
-<pre class="lang-CDDL sourcecode">
+<div class="lang-CDDL sourcecode" id="appendix-C.2-2">
+<pre>
 suites = [ 2* int ] / int
 
 ead = (
@@ -4154,8 +4154,9 @@ OKM(i) = EDHOC-KDF( PRK_2e, -i, TH_2, length(P(i)) )
         <h3 id="name-initiator-state-machine">
 <a href="#appendix-K.1" class="section-number selfRef">K.1. </a><a href="#name-initiator-state-machine" class="section-name selfRef">Initiator State Machine</a>
         </h3>
-<p id="appendix-K.1-1">The Initiator triggers the state machine by sending message_1, transitioning from START to WAIT_M2. In case the incoming message processing failed, the Initiator sends an error message and discontinues the protocol, transitioning from WAIT_M2 to ABORTED. If an error message is received with error code 2 (Wrong Selected Cipher Suite), the Initiator remembers the supported suites for this particular Responder and transitions from ABORTED to START. The message_1 that the Initiator subsequently sends takes into account the cipher suite supported by the Responder. Upon successful processing of message_2, the Initiator transitions to RCVD_M2. The Initiator prepares and processes message_3 for sending. In case any internal error is encountered, the Initiator sends an error message and discontinues the protocol by transitioning from RCVD_M2 to ABORTED. Once message_3 is successfully sent, the Initiator transitions from RCVD_M2 to COMPLETED. The Initiator transitions from COMPLETED to PERSISTED upon key confirmation by the Responder. The key confirmation can either occur by receiving an optional message_4 (if supported by the application profile) or by successful decryption and verification of an incoming application message protected with derived application keys. In case a processing error occurs while in COMPLETED, the Initiator sends an error message and discontinues the protocol.<a href="#appendix-K.1-1" class="pilcrow">¶</a></p>
-<div class="alignCenter art-text artwork" id="appendix-K.1-2">
+<p id="appendix-K.1-1">The Initiator triggers the state machine by sending message_1, transitioning from START to WAIT_M2.<a href="#appendix-K.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-K.1-2">In case the incoming message processing failed, the Initiator sends an error message and discontinues the protocol, transitioning from WAIT_M2 to ABORTED. If an error message is received with error code 2 (Wrong Selected Cipher Suite), the Initiator remembers the supported suites for this particular Responder and transitions from ABORTED to START. The message_1 that the Initiator subsequently sends takes into account the cipher suite supported by the Responder. Upon successful processing of message_2, the Initiator transitions to RCVD_M2. The Initiator prepares and processes message_3 for sending. In case any internal error is encountered, the Initiator sends an error message and discontinues the protocol by transitioning from RCVD_M2 to ABORTED. Once message_3 is successfully sent, the Initiator transitions from RCVD_M2 to COMPLETED. The Initiator transitions from COMPLETED to PERSISTED upon key confirmation by the Responder. The key confirmation can either occur by receiving an optional message_4 (if supported by the application profile) or by successful decryption and verification of an incoming application message protected with derived application keys. In case a processing error occurs while in COMPLETED, the Initiator sends an error message and discontinues the protocol.<a href="#appendix-K.1-2" class="pilcrow">¶</a></p>
+<div class="alignCenter art-text artwork" id="appendix-K.1-3">
 <pre>
     +-------------------&gt; START
     |                       |
@@ -4181,7 +4182,7 @@ ABORTED &lt;---------------- WAIT_M2
                                        verification of an incoming
                                        application message protected
                                        with derived application keys
-</pre><a href="#appendix-K.1-2" class="pilcrow">¶</a>
+</pre><a href="#appendix-K.1-3" class="pilcrow">¶</a>
 </div>
 </section>
 </div>

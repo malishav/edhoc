@@ -5,11 +5,11 @@
 LAKE Working Group                                           G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Informational                                  Ericsson
-Expires: 2 June 2023                                          M. Serafin
+Expires: 9 June 2023                                          M. Serafin
                                                               ASSA ABLOY
                                                                M. Tiloca
                                                                     RISE
-                                                        29 November 2022
+                                                         6 December 2022
 
 
                             Traces of EDHOC
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 June 2023.
+   This Internet-Draft will expire on 9 June 2023.
 
 Copyright Notice
 

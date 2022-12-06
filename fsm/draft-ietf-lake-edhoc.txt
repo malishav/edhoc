@@ -5,8 +5,8 @@
 LAKE Working Group                                           G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 2 June 2023                                            Ericsson
-                                                        29 November 2022
+Expires: 9 June 2023                                            Ericsson
+                                                         6 December 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 June 2023.
+   This Internet-Draft will expire on 9 June 2023.
 
 Copyright Notice
 
@@ -3037,9 +3037,9 @@ Table of Contents
    [I-D.ietf-rats-eat]
               Lundblade, L., Mandyam, G., O'Donoghue, J., and C.
               Wallace, "The Entity Attestation Token (EAT)", Work in
-              Progress, Internet-Draft, draft-ietf-rats-eat-17, 22
-              October 2022, <https://www.ietf.org/archive/id/draft-ietf-
-              rats-eat-17.txt>.
+              Progress, Internet-Draft, draft-ietf-rats-eat-18, 4
+              December 2022, <https://www.ietf.org/archive/id/draft-
+              ietf-rats-eat-18.txt>.
 
    [I-D.irtf-cfrg-det-sigs-with-noise]
               Mattsson, J. P., Thormarker, E., and S. Ruohomaa,
@@ -4078,27 +4078,28 @@ Appendix K.  Example Protocol State Machine
 K.1.  Initiator State Machine
 
    The Initiator triggers the state machine by sending message_1,
-   transitioning from START to WAIT_M2.  In case the incoming message
-   processing failed, the Initiator sends an error message and
-   discontinues the protocol, transitioning from WAIT_M2 to ABORTED.  If
-   an error message is received with error code 2 (Wrong Selected Cipher
-   Suite), the Initiator remembers the supported suites for this
-   particular Responder and transitions from ABORTED to START.  The
-   message_1 that the Initiator subsequently sends takes into account
-   the cipher suite supported by the Responder.  Upon successful
-   processing of message_2, the Initiator transitions to RCVD_M2.  The
-   Initiator prepares and processes message_3 for sending.  In case any
-   internal error is encountered, the Initiator sends an error message
-   and discontinues the protocol by transitioning from RCVD_M2 to
-   ABORTED.  Once message_3 is successfully sent, the Initiator
-   transitions from RCVD_M2 to COMPLETED.  The Initiator transitions
-   from COMPLETED to PERSISTED upon key confirmation by the Responder.
-   The key confirmation can either occur by receiving an optional
-   message_4 (if supported by the application profile) or by successful
-   decryption and verification of an incoming application message
-   protected with derived application keys.  In case a processing error
-   occurs while in COMPLETED, the Initiator sends an error message and
-   discontinues the protocol.
+   transitioning from START to WAIT_M2.
+
+   In case the incoming message processing failed, the Initiator sends
+   an error message and discontinues the protocol, transitioning from
+   WAIT_M2 to ABORTED.  If an error message is received with error code
+   2 (Wrong Selected Cipher Suite), the Initiator remembers the
+   supported suites for this particular Responder and transitions from
+   ABORTED to START.  The message_1 that the Initiator subsequently
+   sends takes into account the cipher suite supported by the Responder.
+   Upon successful processing of message_2, the Initiator transitions to
+   RCVD_M2.  The Initiator prepares and processes message_3 for sending.
+   In case any internal error is encountered, the Initiator sends an
+   error message and discontinues the protocol by transitioning from
+   RCVD_M2 to ABORTED.  Once message_3 is successfully sent, the
+   Initiator transitions from RCVD_M2 to COMPLETED.  The Initiator
+   transitions from COMPLETED to PERSISTED upon key confirmation by the
+   Responder.  The key confirmation can either occur by receiving an
+   optional message_4 (if supported by the application profile) or by
+   successful decryption and verification of an incoming application
+   message protected with derived application keys.  In case a
+   processing error occurs while in COMPLETED, the Initiator sends an
+   error message and discontinues the protocol.
 
        +-------------------> START
        |                       |
