@@ -4216,8 +4216,9 @@ ABORTED &lt;---------------- WAIT_M2
 <p id="appendix-K.2-3">The Responder prepares and processes message_2 for sending. If any processing error is encountered, the Responder transitions from VRFD_M1 to ABORTED. If message_2 is successfully sent, the Initiator transitions from VRFD_M2 to WAIT_M3, and waits for message_3.<a href="#appendix-K.2-3" class="pilcrow">¶</a></p>
 <p id="appendix-K.2-4">If the incoming message is an error message then the Responder transitions from WAIT_M3 to ABORTED.<a href="#appendix-K.2-4" class="pilcrow">¶</a></p>
 <p id="appendix-K.2-5">Upon receiving message_3, the Responder transitions from WAIT_M3 to RCVD_M3. If a processing error occurs on message_3, the Responder transitions from RCVD_M3 to ABORTED. In case of successful processing of message_3, the Responder transitions from RCVD_M3 to COMPLETED (="VRFD_M3").<a href="#appendix-K.2-5" class="pilcrow">¶</a></p>
-<p id="appendix-K.2-6">If the application profile includes message_4, the Responder prepares and processes message_4 for sending. If any processing error is encountered, the Responder transitions from COMPLETED to ABORTED. If not, message_4 is successfully sent and the Responder transitions from COMPLETED to PERSISTED.<a href="#appendix-K.2-6" class="pilcrow">¶</a></p>
-<div class="alignCenter art-text artwork" id="appendix-K.2-7">
+<p id="appendix-K.2-6">If the application profile includes message_4, the Responder prepares and processes message_4 for sending. If any processing error is encountered, the Responder transitions from COMPLETED to ABORTED.<a href="#appendix-K.2-6" class="pilcrow">¶</a></p>
+<p id="appendix-K.2-7">If message_4 is successfully sent, or if the application profile does not include message_4, the Responder transitions from COMPLETED to PERSISTED.<a href="#appendix-K.2-7" class="pilcrow">¶</a></p>
+<div class="alignCenter art-text artwork" id="appendix-K.2-8">
 <pre>
                           START
                             |
@@ -4250,7 +4251,7 @@ ABORTED &lt;---------------- RCVD_M1
                             |
                             v
                          PERSISTED
-</pre><a href="#appendix-K.2-7" class="pilcrow">¶</a>
+</pre><a href="#appendix-K.2-8" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
