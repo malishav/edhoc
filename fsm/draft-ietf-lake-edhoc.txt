@@ -5,8 +5,8 @@
 LAKE Working Group                                           G. Selander
 Internet-Draft                                         J. Preuß Mattsson
 Intended status: Standards Track                            F. Palombini
-Expires: 9 June 2023                                            Ericsson
-                                                         6 December 2022
+Expires: 10 June 2023                                           Ericsson
+                                                         7 December 2022
 
 
                Ephemeral Diffie-Hellman Over COSE (EDHOC)
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 June 2023.
+   This Internet-Draft will expire on 10 June 2023.
 
 Copyright Notice
 
@@ -4075,6 +4075,17 @@ Appendix K.  Example Protocol State Machine
    Initiator and for the Responder.  States are denoted in all capitals
    and parentheses denote actions taken only in some circumstances.
 
+   Note that this state machine is just an example, and that details of
+   processing are omitted, for example:
+
+   *  When error messages are being sent (with one exception)
+
+   *  How credentials and EAD are processed by EDHOC and the application
+      in the RCVD state
+
+   *  What verifications are made, which includes not only MACs and
+      signatures
+
 K.1.  Initiator State Machine
 
    The Initiator sends message_1, triggering the state machine to
@@ -4088,10 +4099,10 @@ K.1.  Initiator State Machine
    into account the cipher suites supported by the Responder.
 
    Upon receiving a non-error message, the Initiator transitions from
-   WAIT_M2 to RCVD_M2 and processes the message.  If processing fails,
-   then the Initiator transitions from RCVD_M2 to ABORTED.  In case of
-   successful processing of message_2, the Initiator transitions from
-   RCVD_M2 to VRFD_M2.
+   WAIT_M2 to RCVD_M2 and processes the message.  If a processing error
+   occurs on message_2, then the Initiator transitions from RCVD_M2 to
+   ABORTED.  In case of successful processing of message_2, the
+   Initiator transitions from RCVD_M2 to VRFD_M2.
 
    The Initiator prepares and processes message_3 for sending.  If any
    processing error is encountered, the Initiator transitions from
@@ -4102,10 +4113,11 @@ K.1.  Initiator State Machine
    waits for message_4.  If the incoming message is an error message
    then the Initiator transitions from COMPLETED to ABORTED.  Upon
    receiving a non-error message, the Initiator transitions from
-   COMPLETED (="WAIT_M4") to RCVD_M4 and processes the message.  If
-   processing fails, then the Initiator transitions from RCVD_M4 to
-   ABORTED.  In case of successful processing of message_4, the
-   Initiator transitions from RCVD_M4 to PERSISTED (="VRFD_M4").
+   COMPLETED (="WAIT_M4") to RCVD_M4 and processes the message.  If a
+   processing error occurs on message_4, then the Initiator transitions
+   from RCVD_M4 to ABORTED.  In case of successful processing of
+   message_4, the Initiator transitions from RCVD_M4 to PERSISTED
+   (="VRFD_M4").
 
    If the application profile does not include message_4, then the
    Initiator waits for an incoming application message.  If the

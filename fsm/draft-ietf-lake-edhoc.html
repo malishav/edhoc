@@ -1040,7 +1040,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Selander, et al.</td>
-<td class="center">Expires 9 June 2023</td>
+<td class="center">Expires 10 June 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1053,12 +1053,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-lake-edhoc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-12-06" class="published">6 December 2022</time>
+<time datetime="2022-12-07" class="published">7 December 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-06-09">9 June 2023</time></dd>
+<dd class="expires"><time datetime="2023-06-10">10 June 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1111,7 +1111,7 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 June 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 June 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -4149,6 +4149,15 @@ OKM(i) = EDHOC-KDF( PRK_2e, -i, TH_2, length(P(i)) )
 <a href="#appendix-K" class="section-number selfRef">Appendix K. </a><a href="#name-example-protocol-state-mach" class="section-name selfRef">Example Protocol State Machine</a>
       </h2>
 <p id="appendix-K-1">This appendix describes an example protocol state machine for the Initiator and for the Responder. States are denoted in all capitals and parentheses denote actions taken only in some circumstances.<a href="#appendix-K-1" class="pilcrow">¶</a></p>
+<p id="appendix-K-2">Note that this state machine is just an example, and that details of processing are omitted, for example:<a href="#appendix-K-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-K-3.1">When error messages are being sent (with one exception)<a href="#appendix-K-3.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-K-3.2">How credentials and EAD are processed by EDHOC and the application in the RCVD state<a href="#appendix-K-3.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="appendix-K-3.3">What verifications are made, which includes not only MACs and signatures<a href="#appendix-K-3.3" class="pilcrow">¶</a>
+</li>
+      </ul>
 <div id="initiator-state-machine">
 <section id="appendix-K.1">
         <h3 id="name-initiator-state-machine">
@@ -4156,9 +4165,9 @@ OKM(i) = EDHOC-KDF( PRK_2e, -i, TH_2, length(P(i)) )
         </h3>
 <p id="appendix-K.1-1">The Initiator sends message_1, triggering the state machine to transition from START to WAIT_M2, and waits for message_2.<a href="#appendix-K.1-1" class="pilcrow">¶</a></p>
 <p id="appendix-K.1-2">If the incoming message is an error message then the Initiator transitions from WAIT_M2 to ABORTED. In case of error code 2 (Wrong Selected Cipher Suite), the Initiator remembers the supported cipher suites for this particular Responder and transitions from ABORTED to START. The message_1 that the Initiator subsequently sends takes into account the cipher suites supported by the Responder.<a href="#appendix-K.1-2" class="pilcrow">¶</a></p>
-<p id="appendix-K.1-3">Upon receiving a non-error message, the Initiator transitions from WAIT_M2 to RCVD_M2 and processes the message. If processing fails, then the Initiator transitions from RCVD_M2 to ABORTED. In case of successful processing of message_2, the Initiator transitions from RCVD_M2 to VRFD_M2.<a href="#appendix-K.1-3" class="pilcrow">¶</a></p>
+<p id="appendix-K.1-3">Upon receiving a non-error message, the Initiator transitions from WAIT_M2 to RCVD_M2 and processes the message. If a processing error occurs on message_2, then the Initiator transitions from RCVD_M2 to ABORTED. In case of successful processing of message_2, the Initiator transitions from RCVD_M2 to VRFD_M2.<a href="#appendix-K.1-3" class="pilcrow">¶</a></p>
 <p id="appendix-K.1-4">The Initiator prepares and processes message_3 for sending. If any processing error is encountered, the Initiator transitions from VRFD_M2 to ABORTED. If message_3 is successfully sent, the Initiator transitions from VRFD_M2 to COMPLETED.<a href="#appendix-K.1-4" class="pilcrow">¶</a></p>
-<p id="appendix-K.1-5">If the application profile includes message_4, then the Initiator waits for message_4. If the incoming message is an error message then the Initiator transitions from COMPLETED to ABORTED. Upon receiving a non-error message, the Initiator transitions from COMPLETED (="WAIT_M4") to RCVD_M4 and processes the message. If processing fails, then the Initiator transitions from RCVD_M4 to ABORTED. In case of successful processing of message_4, the Initiator transitions from RCVD_M4 to PERSISTED (="VRFD_M4").<a href="#appendix-K.1-5" class="pilcrow">¶</a></p>
+<p id="appendix-K.1-5">If the application profile includes message_4, then the Initiator waits for message_4. If the incoming message is an error message then the Initiator transitions from COMPLETED to ABORTED. Upon receiving a non-error message, the Initiator transitions from COMPLETED (="WAIT_M4") to RCVD_M4 and processes the message. If a processing error occurs on message_4, then the Initiator transitions from RCVD_M4 to ABORTED. In case of successful processing of message_4, the Initiator transitions from RCVD_M4 to PERSISTED (="VRFD_M4").<a href="#appendix-K.1-5" class="pilcrow">¶</a></p>
 <p id="appendix-K.1-6">If the application profile does not include message_4, then the Initiator waits for an incoming application message. If the decryption and verification of the application message is successful, then the the Initiator transitions from COMPLETED to PERSISTED.<a href="#appendix-K.1-6" class="pilcrow">¶</a></p>
 <div class="alignCenter art-text artwork" id="appendix-K.1-7">
 <pre>
